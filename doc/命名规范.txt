@@ -1,9 +1,4 @@
-·ÖÀàµÄÃüÃû·½·¨£ºÊ¹ÓÃµ¥¸ö×ÖÄ¸+"_"ÎªÇ°×º
-
-1.²¼¾Ö£¨grid£©£¨.g_£©;Ä£¿é£¨module£©£¨.m_£©;Ôª¼þ£¨unit£©£¨.u_£©;
-
-2.°´Å¥£¨button£©£¨.u_btn_£©;Í¼±ê£¨icon£©£¨.u_ico_£©;
-
-3.×ÖÌå´óÐ¡£¨size£©£¨.u_fs£©;
-
-4.´ó£¨big£©(_big);ÖÐ£¨middle£©(_mid);´ó£¨small£©(_sma);²»¿Éµã£¨disable£©(_dis);
+1.å¸ƒå±€ï¼ˆgridï¼‰ï¼ˆ.g_ï¼‰ï¼›æ¨¡å—ï¼ˆmoduleï¼‰ï¼ˆ.m_ï¼‰ï¼›å…ƒä»¶ï¼ˆunitï¼‰ï¼ˆ.u_ï¼‰ï¼›
+2.æŒ‰é’®ï¼ˆbuttonï¼‰ï¼ˆ.u_btn_ï¼‰ï¼›å›¾æ ‡ï¼ˆiconï¼‰ï¼ˆ.u_ico_ï¼‰ï¼›
+3.å¤§å°ï¼ˆsizeï¼‰ï¼ˆ.u_fsï¼‰ï¼›åŠ ç²—ï¼ˆboldï¼‰ï¼ˆ.u_fbï¼‰
+4.å¤§ï¼ˆbigï¼‰(_big)ï¼›ä¸­ï¼ˆmiddleï¼‰(_mid)ï¼›å¤§ï¼ˆsmallï¼‰(_sma)ï¼›ä¸å¯ç‚¹ï¼ˆdisableï¼‰(_dis)ï¼›
