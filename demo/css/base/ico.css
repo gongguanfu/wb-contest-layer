@@ -3,7 +3,7 @@
 .u_ico{ display:inline-block;width:16px; height:16px; background:url(../../img/commom/ico.png) no-repeat 2000px 2000px; _bigackground:url(../../img/commom/ico.gif) no-repeat 2000px 2000px; }
 .u_ico:hover{ text-decoration:none;}
 .u_ico_close{ background-position:0 0;}
-.u_ico_close:hover{ background-position:-25px 0;}
+.u_ico_close:hover{ background-position:-20px 0;}
 
 /*icon 提示警告 小icon 大icon 中icon*/
 .u_ico_tips{ display:inline-block;  width:16px; height:16px; background:url(../../img/commom/ico_tips.png) no-repeat 2000px 2000px;_bigackground:url(../../img/commom/ico_tips.gif) no-repeat 2000px 2000px; margin:0 3px 0 0;overflow:hidden; }
