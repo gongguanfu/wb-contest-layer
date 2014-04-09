@@ -2,7 +2,28 @@
 * rotateXTop.css
 */
 
-.rotateXTopIn{-webkit-animation:rotateXTopIn .25s ease-out 1 both;animation:rotateXTopIn .25s  ease-out 1 both;}
+.rotateXTopIn,
+.rotateXTopOut{
+    -webkit-animation-duration:.25s;
+    -webkit-animation-iteration-count:1;
+    -webkit-animatino-fill-mode:both;
+    animation-duration:.25s;
+    animation-iteration-count:1;
+    animatino-fill-mode:both;
+}
+
+.rotateXTopIn{
+    -webkit-animation-timing-function:ease-out;
+    animation-timing-function:ease-out;
+}
+
+.rotateXTopOut{
+    -webkit-animation-timing-function:ease-in;
+    animation-timing-function:ease-in;
+}
+
+
+.rotateXTopIn{-webkit-animation-name:rotateXTopIn;animation-name:rotateXTopIn}
 
 @-webkit-keyframes rotateXTopIn{
     0%{
@@ -22,7 +43,7 @@
     }
 }
 
-.rotateXTopOut{-webkit-animation:rotateXTopOut .25s ease-in 1 both;animation:rotateXTopOut ease-in .25s 1 both;}
+.rotateXTopOut{-webkit-animation-name:rotateXTopOut;animation-name:rotateXTopOut}
 
 @-webkit-keyframes rotateXTopOut{
     0%{
