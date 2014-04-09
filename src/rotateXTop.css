@@ -1,0 +1,43 @@
+/*
+* rotateXTop.css
+*/
+
+.rotateXTopIn{-webkit-animation:rotateXTopIn .25s ease-out 1 both;animation:rotateXTopIn .25s  ease-out 1 both;}
+
+@-webkit-keyframes rotateXTopIn{
+    0%{
+        -webkit-transform:translate(0,-30px);
+    }
+    100%{
+        -webkit-transform:translate(0,0);
+    }
+}
+
+@keyframes rotateXTopIn{
+    0%{
+        transform:translate(0,-30px);
+    }
+    100%{
+        transform:translate(0,0);
+    }
+}
+
+.rotateXTopOut{-webkit-animation:rotateXTopOut .25s ease-in 1 both;animation:rotateXTopOut ease-in .25s 1 both;}
+
+@-webkit-keyframes rotateXTopOut{
+    0%{
+        -webkit-transform:translate(0,0);
+    }
+    100%{
+        -webkit-transform:translate(0,-30px);
+    }
+}
+
+@keyframes rotateXTopOut{
+    0%{
+        transform:translate(0,0);
+    }
+    100%{
+        transform:translate(0,-30px);
+    }
+}

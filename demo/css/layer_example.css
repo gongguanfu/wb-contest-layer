@@ -1,0 +1,38 @@
+/*
+* layer_example.css
+* demo style for vivid layer
+*/
+
+/*reset*/
+a img{border:none;}
+a{color: #fa3381;text-decoration:none;}
+em,var{font-style:normal;}
+ul,ol{padding:0;list-style-type:none;}
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,form,p{margin:0;}
+body,td,th,h1,h2,h3,h4,h5,h6 {font-size:12px;}
+input,textarea,a,button{outline:none;}
+body{color:#333;background:#fafafa;line-height:1.125;font-family:Verdana, sans-serif;}
+a:hover{text-decoration:underline;}
+
+/*effects type select area*/
+.total_container{width:800px;margin:0 auto;padding-top:100px;}
+.demo_header{margin-bottom:20px;padding-bottom:20px;border-bottom:1px dashed #ccc;text-align:center;}
+.demo_title{margin-bottom:20px;font-size:32px;}
+.demo_note{color:#666;font-size:12px;}
+.sort_area{margin-bottom:60px;}
+.sort_title{margin-bottom:20px;font-size:18px;}
+.effect_link{display:inline-block;height:30px;margin-right:20px;padding:0 15px;border-radius:3px;background:#ce544f;color:#fff;line-height:30px;-webkit-transition:background .25s linear;transition:background .25s linear;}
+.effect_link:hover{text-decoration:none;background:#f05954;}
+
+/*one layer*/
+.m_layer {position:fixed;border-radius:3px;margin:-97px 0 0 -207px;left:50%;top:50%;z-index:500;}
+.m_layer .layer_shadow{padding:3px;border-radius:4px;background:url(../img/layer/layer_bg.png) repeat;}
+.m_layer .layer_container{background:#fff;border:1px solid #ccc;border-radius:2px}
+.m_layer .layer_header{position:relative;height:30px;background:#f2f2f2;line-height:30px;}
+.m_layer .layer_title{padding-left:20px;font-size:12px;font-weight:bold;}
+.m_layer .layer_close_link{position:absolute;width:16px;height:16px;background:url(../img/commom/ico.png);right:17px;top:6px;z-index:2;}
+.m_layer .layer_close_link:hover{background-position:-20px 0;}
+.m_layer .declare{width:200px;height:50px;padding:50px 100px;font-size:14px;text-align:center;line-height:50px;}
+
+/*layer mask*/
+.layer_mask{position:fixed;left:0;right:0;top:0;bottom:0;background:black;opacity:.75;filter:alpha(opacity=75);z-index:100;}
