@@ -23,7 +23,7 @@
 }
 
 
-.rotateXTopIn{-webkit-animation-name:rotateXTopIn;animation-name:rotateXTopIn}
+.rotateXTopIn{-webkit-animation-name:rotateXTopIn;animation-name:rotateXTopIn;}
 
 @-webkit-keyframes rotateXTopIn{
     0%{
@@ -43,7 +43,7 @@
     }
 }
 
-.rotateXTopOut{-webkit-animation-name:rotateXTopOut;animation-name:rotateXTopOut}
+.rotateXTopOut{-webkit-animation-name:rotateXTopOut;animation-name:rotateXTopOut;}
 
 @-webkit-keyframes rotateXTopOut{
     0%{
