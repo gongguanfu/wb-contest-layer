@@ -1,35 +1,35 @@
 /*
-* rotateXTop.css
+* rotateXBottom.css
 */
 
-.rotateXTopIn,
-.rotateXTopOut{
-    -webkit-transform-origin:50% 20% 0%;
+.rotateXBottomIn,
+.rotateXBottomOut{
+    -webkit-transform-origin:50% 80% 0%;
     -webkit-animation-duration:.25s;
     -webkit-animation-iteration-count:1;
     -webkit-animatino-fill-mode:both;
-    transform-origin:50% 20% 0%;
+    transform-origin:50% 80% 0%;
     animation-duration:.25s;
     animation-iteration-count:1;
     animatino-fill-mode:both;
 }
 
-.rotateXTopIn{
+.rotateXBottomIn{
     -webkit-animation-timing-function:ease-out;
     animation-timing-function:ease-out;
 }
 
-.rotateXTopOut{
+.rotateXBottomOut{
     -webkit-animation-timing-function:ease-in;
     animation-timing-function:ease-in;
 }
 
 
-.rotateXTopIn{-webkit-animation-name:rotateXTopIn;animation-name:rotateXTopIn;}
+.rotateXBottomIn{-webkit-animation-name:rotateXBottomIn;animation-name:rotateXBottomIn;}
 
-@-webkit-keyframes rotateXTopIn{
+@-webkit-keyframes rotateXBottomIn{
     0%{
-        -webkit-transform:perspective(300px) rotateX(40deg) translate3d(0px,-90%,-30px);
+        -webkit-transform:perspective(300px) rotateX(-40deg) translate3d(0px,90%,-30px);
         opacity:.2;
     }
     100%{
@@ -38,9 +38,9 @@
     }
 }
 
-@keyframes rotateXTopIn{
+@keyframes rotateXBottomIn{
     0%{
-        transform:perspective(300px) rotateX(40deg) translate3d(0px,-90%,-30px);
+        transform:perspective(300px) rotateX(-40deg) translate3d(0px,90%,-30px);
         opacity:.2;
     }
     100%{
@@ -49,26 +49,26 @@
     }
 }
 
-.rotateXTopOut{-webkit-animation-name:rotateXTopOut;animation-name:rotateXTopOut;}
+.rotateXBottomOut{-webkit-animation-name:rotateXBottomOut;animation-name:rotateXBottomOut;}
 
-@-webkit-keyframes rotateXTopOut{
+@-webkit-keyframes rotateXBottomOut{
     0%{
         -webkit-transform:perspective(300px) rotateX(0deg) translate3d(0px,0px,0px);
         opacity:1;
     }
     100%{
-        -webkit-transform:perspective(300px) rotateX(40deg) translate3d(0px,-90%,-30px);
+        -webkit-transform:perspective(300px) rotateX(-40deg) translate3d(0px,90%,-30px);
         opacity:.2;
     }
 }
 
-@keyframes rotateXTopOut{
+@keyframes rotateXBottomOut{
     0%{
         transform:perspective(300px) rotateX(0deg) translate3d(0px,0px,0px);
         opacity:1;
     }
     100%{
-        transform:perspective(300px) rotateX(40deg) translate3d(0px,-90%,-30px);
+        transform:perspective(300px) rotateX(-40deg) translate3d(0px,90%,-30px);
         opacity:.2;
     }
 }

@@ -50,7 +50,7 @@ YUI().use("node", function(Y) {
         }
 
         function handleClose(event){
-            if(endFlag === null){
+            if(endFlag === null && maskNode !== null){
                 layerNode.removeClass(InEffectClass);
                 layerNode.addClass(outEffectClass);
                 endFlag = setTimeout(closeLayer,Constants.DEFAULT_EFFECT_DURATION);
