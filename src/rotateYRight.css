@@ -1,0 +1,74 @@
+/*
+* rotateYRight.css
+*/
+
+.rotateYRightIn,
+.rotateYRightOut{
+    -webkit-transform-origin:80% 50% 0%;
+    -webkit-animation-duration:.25s;
+    -webkit-animation-iteration-count:1;
+    -webkit-animatino-fill-mode:both;
+    transform-origin:80% 50% 0%;
+    animation-duration:.25s;
+    animation-iteration-count:1;
+    animatino-fill-mode:both;
+}
+
+.rotateYRightIn{
+    -webkit-animation-timing-function:ease-out;
+    animation-timing-function:ease-out;
+}
+
+.rotateYRightOut{
+    -webkit-animation-timing-function:ease-in;
+    animation-timing-function:ease-in;
+}
+
+
+.rotateYRightIn{-webkit-animation-name:rotateYRightIn;animation-name:rotateYRightIn;}
+
+@-webkit-keyframes rotateYRightIn{
+    0%{
+        -webkit-transform:perspective(300px) rotateY(40deg) translate3d(50%,0px,-30px);
+        opacity:.2;
+    }
+    100%{
+        -webkit-transform:perspective(300px) rotateY(0deg) translate3d(0px,0px,0px);
+        opacity:1;
+    }
+}
+
+@keyframes rotateYRightIn{
+    0%{
+        transform:perspective(300px) rotateY(40deg) translate3d(50%,0px,-30px);
+        opacity:.2;
+    }
+    100%{
+        transform:perspective(300px) rotateY(0deg) translate3d(0px,0px,0px);
+        opacity:1;
+    }
+}
+
+.rotateYRightOut{-webkit-animation-name:rotateYRightOut;animation-name:rotateYRightOut;}
+
+@-webkit-keyframes rotateYRightOut{
+    0%{
+        -webkit-transform:perspective(300px) rotateX(0deg) translate3d(0px,0px,0px);
+        opacity:1;
+    }
+    100%{
+        -webkit-transform:perspective(300px) rotateY(40deg) translate3d(50%,0px,-30px);
+        opacity:.2;
+    }
+}
+
+@keyframes rotateYRightOut{
+    0%{
+        transform:perspective(300px) rotateX(0deg) translate3d(0px,0px,0px);
+        opacity:1;
+    }
+    100%{
+        transform:perspective(300px) rotateY(40deg) translate3d(50%,0px,-30px);
+        opacity:.2;
+    }
+}

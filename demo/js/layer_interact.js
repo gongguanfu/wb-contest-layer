@@ -18,7 +18,7 @@ YUI().use("node", function(Y) {
             DEFAULT_EFFECT_DURATION: 250
         };
 
-        var doc = Y.one(document), 
+        var doc = Y.one(document),
             effectNode = Y.one("." + Constants.EFFECTS_CLASS),
             layerNode = Y.one("#" + Constants.LAYER_ID),
             layerCloseNode = layerNode.one("." + Constants.LAYER_CLOSE_CLASS),
@@ -29,45 +29,45 @@ YUI().use("node", function(Y) {
             outEffectClass = "",
             endFlag = null;
 
-        function createMask(){
+        function createMask() {
             maskNode = Y.Node.create("<div></div>");
             maskNode.addClass(Constants.MASK_CLASS);
             maskNode.appendTo("body");
         }
 
-        function closeLayer(){
+        function closeLayer() {
             layerNode.hide();
             layerNode.removeClass(outEffectClass);
             maskNode.hide();
             endFlag = null;
         }
 
-        function showLayer(){
-            if(maskNode === null){
+        function showLayer() {
+            if (maskNode === null) {
                 createMask();
-            }else{
+            } else {
                 maskNode.show();
             }
-            layerDeclareNode.set("text", "Effect: " + effectName);
+            layerDeclareNode.setHTML("Effect: <em>" + effectName + "</em>");
             layerNode.show();
             layerNode.addClass(InEffectClass);
         }
 
-        function handleClose(event){
-            if(endFlag === null && maskNode !== null){
+        function handleClose(event) {
+            if (endFlag === null && maskNode !== null) {
                 layerNode.removeClass(InEffectClass);
                 layerNode.addClass(outEffectClass);
-                endFlag = setTimeout(closeLayer,Constants.DEFAULT_EFFECT_DURATION);
+                endFlag = setTimeout(closeLayer, Constants.DEFAULT_EFFECT_DURATION);
             }
         }
 
-        function handleLayerClick(event){
+        function handleLayerClick(event) {
             event.stopPropagation();
         }
 
-        function handleLinkClick(event){
+        function handleLinkClick(event) {
             var target = event.currentTarget,
-            targetValue = target.get("text");
+                targetValue = target.get("text");
 
             event.stopPropagation();
 
@@ -77,15 +77,15 @@ YUI().use("node", function(Y) {
             showLayer();
         }
 
-        function bindEvents(){
-            effectNode.delegate("click", handleLinkClick, "."+Constants.LINK_CLASS);
-            layerNode.on("click",handleLayerClick);
-            doc.on("click",handleClose);
-            layerCloseNode.on("click",handleClose);
+        function bindEvents() {
+            effectNode.delegate("click", handleLinkClick, "." + Constants.LINK_CLASS);
+            layerNode.on("click", handleLayerClick);
+            doc.on("click", handleClose);
+            layerCloseNode.on("click", handleClose);
         }
 
-        function init(){
-            if(effectNode){
+        function init() {
+            if (effectNode) {
                 bindEvents();
             }
         }
