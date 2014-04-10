@@ -30,7 +30,7 @@ a:hover{text-decoration:underline;}
 .m_layer .layer_container{background:#fff;border:1px solid #ccc;border-radius:2px}
 .m_layer .layer_header{position:relative;height:30px;background:#f2f2f2;line-height:30px;}
 .m_layer .layer_title{padding-left:20px;font-size:12px;font-weight:bold;}
-.m_layer .layer_close_link{position:absolute;width:16px;height:16px;background:url(../img/commom/ico.png);right:17px;top:6px;z-index:2;}
+.m_layer .layer_close_link{position:absolute;width:16px;height:16px;background:url(../img/common/ico.png);right:17px;top:6px;z-index:2;}
 .m_layer .layer_close_link:hover{background-position:-20px 0;}
 .m_layer .declare{width:200px;height:50px;padding:50px 100px;font-size:14px;text-align:center;line-height:50px;}
 
