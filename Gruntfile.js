@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     },
     watch: {
       update: {
-        files: 'static_pages/js/*.js',
+        files: 'src/*.css',
         tasks: ['concat'],
         options: {
           event: ['changed']
