@@ -5,6 +5,31 @@
 YUI().use("node", function(Y) {
     Y.namespace("vividLayer");
 
+    Y.vividLayer.animation = (function(){
+        var animation = false,
+            animationstring = 'animation',
+            keyframeprefix = '',
+            domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+            pfx  = '',
+            elm = Y.Node.create("<div></div>").getDOMNode();
+
+        if( elm.style.animationName !== undefined ) { animation = true; }    
+
+        if( animation === false ) {
+          for( var i = 0; i < domPrefixes.length; i++ ) {
+            if( elm.style[ domPrefixes[i] + 'AnimationName' ] !== undefined ) {
+              pfx = domPrefixes[ i ];
+              animationstring = pfx + 'Animation';
+              keyframeprefix = '-' + pfx.toLowerCase() + '-';
+              animation = true;
+              break;
+            }
+          }
+        }
+
+        return animation;
+    }());
+
     Y.vividLayer.demoSetup = function() {
         var Constants = {
             EFFECTS_CLASS: "effects_select",
@@ -57,7 +82,11 @@ YUI().use("node", function(Y) {
             if (endFlag === null && maskNode !== null) {
                 layerNode.removeClass(InEffectClass);
                 layerNode.addClass(outEffectClass);
-                endFlag = setTimeout(closeLayer, Constants.DEFAULT_EFFECT_DURATION);
+                if(Y.vividLayer.animation){
+                    endFlag = setTimeout(closeLayer, Constants.DEFAULT_EFFECT_DURATION);
+                }else{
+                    closeLayer();
+                }
             }
         }
 
