@@ -16,7 +16,7 @@
 .m_layer .tab .tab_title { font-size:14px; margin:0 0 0 15px; }
 .m_layer .tab a { height:26px; line-height:26px; padding:0 11px; margin:0 -2px; position:relative; z-index:1; display:inline-block; }
 .m_layer .tab .current { text-decoration:none; cursor:default; background:#fff; border:1px solid #e8e8e8; border-bottom:0; -moz-border-radius-topright:3px; -webkit-border-top-right-radius:3px 3px; -moz-border-radius-topleft:3px; -webkit-border-top-left-radius:3px 3px; }
-.m_layer .tab_bottom { height:27px; padding:3px 0 0; background:url(../../imag/layer/layer_tab_bottom_bg.png) repeat-x left bottom; }
+.m_layer .tab_bottom { height:27px; padding:3px 0 0; background:url(../../img/layer/layer_tab_bottom_bg.png) repeat-x left bottom; }
 .m_layer .tab_bottom .tab_title { font-size:12px; }
 
 /**弹层元组件--四个尖角**/

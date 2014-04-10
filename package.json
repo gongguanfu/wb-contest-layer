@@ -1,10 +1,16 @@
 {
-  "name": "VividLayer",
-  "version": "1.0.0",
-  "description": "VividLayer",
-  "author": [{
-      "name": "gongguanfu"    
-    },{
-    "name": "liangzhu"
-  }]
+    "name": "VividLayer",
+    "version": "1.0.0",
+    "description": "VividLayer",
+    "author": [{
+        "name": "gongguanfu"
+    }, {
+        "name": "liangzhu"
+    }],
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-cssmin": "~0.6.2",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-contrib-concat": "^0.4.0"
+    }
 }
