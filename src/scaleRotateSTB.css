@@ -1,0 +1,71 @@
+/*
+* scaleRotateSTB.css
+*/
+
+.scaleRotateSTBIn,
+.scaleRotateSTBOut{
+    -webkit-animation-duration:.25s;
+    -webkit-animation-iteration-count:1;
+    -webkit-animatino-fill-mode:both;
+    animation-duration:.25s;
+    animation-iteration-count:1;
+    animatino-fill-mode:both;
+}
+
+.scaleRotateSTBIn{
+    -webkit-animation-timing-function:ease-out;
+    animation-timing-function:ease-out;
+}
+
+.scaleRotateSTBOut{
+    -webkit-animation-timing-function:ease-in;
+    animation-timing-function:ease-in;
+}
+
+
+.scaleRotateSTBIn{
+    -webkit-animation-name:scaleRotateSTBIn;
+    animation-name:scaleRotateSTBIn;
+}
+
+@-webkit-keyframes scaleRotateSTBIn{
+    0%{
+        -webkit-transform:scale(0,0) rotate(0deg);
+
+    }
+    100%{
+        -webkit-transform:scale(1,1) rotate(360deg);
+    }
+}
+
+@keyframes scaleRotateSTBIn{
+    0%{
+        transform:scale(0,0) rotate(0deg);
+    }
+    100%{
+        transform:scale(1,1) rotate(360deg);
+    }
+}
+
+.scaleRotateSTBOut{
+    -webkit-animation-name:scaleRotateSTBOut;
+    animation-name:scaleRotateSTBOut;
+}
+
+@-webkit-keyframes scaleRotateSTBOut{
+    0%{
+        -webkit-transform:scale(1,1) rotate(0deg);
+    }
+    100%{
+        -webkit-transform:scale(0,0) rotate(360deg);
+    }
+}
+
+@keyframes scaleRotateSTBOut{
+    0%{
+        transform:scale(1,1) rotate(0deg);
+    }
+    100%{
+        transform:scale(0,0) rotate(360deg);
+    }
+}
