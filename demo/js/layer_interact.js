@@ -11,6 +11,7 @@ YUI().use("node", function(Y) {
             LINK_CLASS: "effect_link",
             LAYER_ID: "demo-layer",
             LAYER_CLOSE_CLASS: "layer_close_link",
+            LAYER_DECLARE_CLASS: "declare",
             MASK_CLASS: "layer_mask",
             IN_SUFFIX: "In",
             OUT_SUFFIX: "Out",
@@ -21,7 +22,9 @@ YUI().use("node", function(Y) {
             effectNode = Y.one("." + Constants.EFFECTS_CLASS),
             layerNode = Y.one("#" + Constants.LAYER_ID),
             layerCloseNode = layerNode.one("." + Constants.LAYER_CLOSE_CLASS),
+            layerDeclareNode = layerNode.one("." + Constants.LAYER_DECLARE_CLASS),
             maskNode = null,
+            effectName = "",
             InEffectClass = "",
             outEffectClass = "",
             endFlag = null;
@@ -45,6 +48,7 @@ YUI().use("node", function(Y) {
             }else{
                 maskNode.show();
             }
+            layerDeclareNode.set("text", "Effect: " + effectName);
             layerNode.show();
             layerNode.addClass(InEffectClass);
         }
@@ -69,6 +73,7 @@ YUI().use("node", function(Y) {
 
             InEffectClass = targetValue + Constants.IN_SUFFIX;
             outEffectClass = targetValue + Constants.OUT_SUFFIX;
+            effectName = targetValue;
             showLayer();
         }
 
