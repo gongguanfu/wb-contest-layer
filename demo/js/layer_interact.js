@@ -52,7 +52,8 @@ YUI().use("node", function(Y) {
             effectName = "",
             InEffectClass = "",
             outEffectClass = "",
-            endFlag = null;
+            endFlag = null,
+            isLayerShowed = false;
 
         function createMask() {
             maskNode = Y.Node.create("<div></div>");
@@ -64,6 +65,7 @@ YUI().use("node", function(Y) {
             layerNode.hide();
             layerNode.removeClass(outEffectClass);
             maskNode.hide();
+            isLayerShowed = false;
             endFlag = null;
         }
 
@@ -75,11 +77,12 @@ YUI().use("node", function(Y) {
             }
             layerDeclareNode.setHTML("Effect: <em>" + effectName + "</em>");
             layerNode.show();
+            isLayerShowed = true;
             layerNode.addClass(InEffectClass);
         }
 
         function handleClose(event) {
-            if (endFlag === null && maskNode !== null) {
+            if (endFlag === null && maskNode !== null && isLayerShowed) {
                 layerNode.removeClass(InEffectClass);
                 layerNode.addClass(outEffectClass);
                 if(Y.vividLayer.animation){
@@ -100,10 +103,12 @@ YUI().use("node", function(Y) {
 
             event.stopPropagation();
 
-            InEffectClass = targetValue + Constants.IN_SUFFIX;
-            outEffectClass = targetValue + Constants.OUT_SUFFIX;
-            effectName = targetValue;
-            showLayer();
+            if(!isLayerShowed){
+                InEffectClass = targetValue + Constants.IN_SUFFIX;
+                outEffectClass = targetValue + Constants.OUT_SUFFIX;
+                effectName = targetValue;
+                showLayer();
+            }
         }
 
         function bindEvents() {
