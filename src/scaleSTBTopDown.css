@@ -1,9 +1,9 @@
 /*
-* scaleSTB3D.css
+* scaleSTBTopDown.css
 */
 
-.scaleSTB3DIn,
-.scaleSTB3DOut{
+.scaleSTBTopDownIn,
+.scaleSTBTopDownOut{
     -webkit-animation-duration:.25s;
     -webkit-animation-iteration-count:1;
     -webkit-animatino-fill-mode:both;
@@ -12,23 +12,23 @@
     animatino-fill-mode:both;
 }
 
-.scaleSTB3DIn{
+.scaleSTBTopDownIn{
     -webkit-animation-timing-function:ease-out;
     animation-timing-function:ease-out;
 }
 
-.scaleSTB3DOut{
+.scaleSTBTopDownOut{
     -webkit-animation-timing-function:ease-in;
     animation-timing-function:ease-in;
 }
 
 
-.scaleSTB3DIn{
-    -webkit-animation-name:scaleSTB3DIn;
-    animation-name:scaleSTB3DIn;
+.scaleSTBTopDownIn{
+    -webkit-animation-name:scaleSTBTopDownIn;
+    animation-name:scaleSTBTopDownIn;
 }
 
-@-webkit-keyframes scaleSTB3DIn{
+@-webkit-keyframes scaleSTBTopDownIn{
     0%{
         -webkit-transform:scale(0,0) translateY(0) rotate(0deg);
         opacity:0;
@@ -49,7 +49,7 @@
 
 
 
-@keyframes scaleSTB3DIn{
+@keyframes scaleSTBTopDownIn{
     0%{
         transform:scale(0,0) translateY(0) rotate(0deg);
         opacity:0;
@@ -68,12 +68,12 @@
     }
 }
 
-.scaleSTB3DOut{
-    -webkit-animation-name:scaleSTB3DOut;
-    animation-name:scaleSTB3DOut;
+.scaleSTBTopDownOut{
+    -webkit-animation-name:scaleSTBTopDownOut;
+    animation-name:scaleSTBTopDownOut;
 }
 
-@-webkit-keyframes scaleSTB3DOut{
+@-webkit-keyframes scaleSTBTopDownOut{
     0%{
         -webkit-transform:scale(1,1) translateY(0) rotate(0deg);
         opacity:1;
@@ -92,7 +92,7 @@
     }
 }
 
-@keyframes scaleSTB3DOut{
+@keyframes scaleSTBTopDownOut{
     0%{
         transform:scale(1,1) translateY(0) rotate(0deg);
         opacity:1;
