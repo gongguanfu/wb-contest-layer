@@ -1,0 +1,112 @@
+/*
+* scaleSTBLeftRight.css
+*/
+
+.scaleSTBLeftRightIn,
+.scaleSTBLeftRightOut{
+    -webkit-animation-duration:.25s;
+    -webkit-animation-iteration-count:1;
+    -webkit-animatino-fill-mode:both;
+    animation-duration:.25s;
+    animation-iteration-count:1;
+    animatino-fill-mode:both;
+}
+
+.scaleSTBLeftRightIn{
+    -webkit-animation-timing-function:ease-out;
+    animation-timing-function:ease-out;
+}
+
+.scaleSTBLeftRightOut{
+    -webkit-animation-timing-function:ease-in;
+    animation-timing-function:ease-in;
+}
+
+
+.scaleSTBLeftRightIn{
+    -webkit-animation-name:scaleSTBLeftRightIn;
+    animation-name:scaleSTBLeftRightIn;
+}
+
+@-webkit-keyframes scaleSTBLeftRightIn{
+    0%{
+        -webkit-transform:scale(0,0) translateX(0) rotate(0deg);
+        opacity:0;
+    }
+
+    50%{
+
+        -webkit-transform:scale(0.5,0.5) translateX(-600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        -webkit-transform:scale(1,1) translateX(0px) rotate(0deg);
+        opacity:1;
+    }
+}
+
+
+
+@keyframes scaleSTBLeftRightIn{
+    0%{
+        transform:scale(0,0) translateX(0) rotate(0deg);
+        opacity:0;
+    }
+
+    50%{
+
+        transform:scale(0.5,0.5) translateX(-600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        transform:scale(1,1) translateX(0px) rotate(0deg);
+        opacity:1;
+    }
+}
+
+.scaleSTBLeftRightOut{
+    -webkit-animation-name:scaleSTBLeftRightOut;
+    animation-name:scaleSTBLeftRightOut;
+}
+
+@-webkit-keyframes scaleSTBLeftRightOut{
+    0%{
+        -webkit-transform:scale(1,1) translateX(0) rotate(0deg);
+        opacity:1;
+    }
+
+    50%{
+
+        -webkit-transform:scale(0.5,0.5) translateX(600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        -webkit-transform:scale(0,0) translateX(0px) rotate(0deg);
+        opacity:0;
+    }
+}
+
+@keyframes scaleSTBLeftRightOut{
+    0%{
+        transform:scale(1,1) translateX(0) rotate(0deg);
+        opacity:1;
+    }
+
+    50%{
+
+        transform:scale(0.5,0.5) translateX(600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        transform:scale(0,0) translateX(0px) rotate(0deg);
+        opacity:0;
+    }
+}

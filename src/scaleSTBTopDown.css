@@ -1,0 +1,112 @@
+/*
+* scaleSTBTopDown.css
+*/
+
+.scaleSTBTopDownIn,
+.scaleSTBTopDownOut{
+    -webkit-animation-duration:.25s;
+    -webkit-animation-iteration-count:1;
+    -webkit-animatino-fill-mode:both;
+    animation-duration:.25s;
+    animation-iteration-count:1;
+    animatino-fill-mode:both;
+}
+
+.scaleSTBTopDownIn{
+    -webkit-animation-timing-function:ease-out;
+    animation-timing-function:ease-out;
+}
+
+.scaleSTBTopDownOut{
+    -webkit-animation-timing-function:ease-in;
+    animation-timing-function:ease-in;
+}
+
+
+.scaleSTBTopDownIn{
+    -webkit-animation-name:scaleSTBTopDownIn;
+    animation-name:scaleSTBTopDownIn;
+}
+
+@-webkit-keyframes scaleSTBTopDownIn{
+    0%{
+        -webkit-transform:scale(0,0) translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    50%{
+
+        -webkit-transform:scale(0.5,0.5) translateY(-600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        -webkit-transform:scale(1,1) translateY(0px) rotate(0deg);
+        opacity:1;
+    }
+}
+
+
+
+@keyframes scaleSTBTopDownIn{
+    0%{
+        transform:scale(0,0) translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    50%{
+
+        transform:scale(0.5,0.5) translateY(-600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        transform:scale(1,1) translateY(0px) rotate(0deg);
+        opacity:1;
+    }
+}
+
+.scaleSTBTopDownOut{
+    -webkit-animation-name:scaleSTBTopDownOut;
+    animation-name:scaleSTBTopDownOut;
+}
+
+@-webkit-keyframes scaleSTBTopDownOut{
+    0%{
+        -webkit-transform:scale(1,1) translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    50%{
+
+        -webkit-transform:scale(0.5,0.5) translateY(600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        -webkit-transform:scale(0,0) translateY(0px) rotate(0deg);
+        opacity:0;
+    }
+}
+
+@keyframes scaleSTBTopDownOut{
+    0%{
+        transform:scale(1,1) translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    50%{
+
+        transform:scale(0.5,0.5) translateY(600px) rotate(360deg);
+        opacity:0.5;
+    }
+
+    100%{
+
+        transform:scale(0,0) translateY(0px) rotate(0deg);
+        opacity:0;
+    }
+}
