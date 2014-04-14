@@ -34,5 +34,8 @@ a:hover{text-decoration:underline;}
 .m_layer .layer_close_link:hover{background-position:-20px 0;}
 .m_layer .declare{width:200px;height:50px;padding:50px 100px;font-size:14px;text-align:center;line-height:50px;}
 
+/*effects name highlight*/
+.m_layer .declare em{color:#c83f47;}
+
 /*layer mask*/
 .layer_mask{position:fixed;left:0;right:0;top:0;bottom:0;background:black;opacity:.75;filter:alpha(opacity=75);z-index:100;}
