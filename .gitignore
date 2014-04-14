@@ -1,6 +1,9 @@
 # IDE Webstorm
 .idea
 
+# Outline
+outline.txt
+
 # Logs
 logs
 *.log
