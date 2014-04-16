@@ -59,8 +59,8 @@ YUI().use("node", function(Y) {
                 position: "absolute",
                 width: layerWidth,
                 height: layerHeight,
-                background: "#e75e5e",
-                opacity: 0.5,
+                background: "#000",
+                opacity: 0.2,
                 left: originX,
                 top: originY,
                 zIndex: 50
@@ -98,7 +98,9 @@ YUI().use("node", function(Y) {
 
         // 弹性运动到原位置
         function startSpringMove(){
-            var layerPos = null,
+            var layerPos = layerNode.getXY(),
+            x = layerPos[0],
+            y = layerPos[1],
             dx = 0,
             dy = 0,
             dl = 0,
@@ -106,27 +108,16 @@ YUI().use("node", function(Y) {
             vy = 0,
             vxNext = 0,
             vyNext = 0,
-            x = 0,
-            y = 0,
             friction = Constants.FRICTION,
             spring = Constants.SPRING;
 
             // 弹性动画循环
             function animate(){
-                layerPos = layerNode.getXY();
-                x = layerPos[0];
-                y = layerPos[1];
-
                 dx = originX - x;
                 dy = originY - y;
                 dl = Math.sqrt(dx *dx + dy * dy);
 
-                // console.log("[animate] dx = " + dx);
-                // console.log("[animate] dy = " + dy);
-                // console.log("[animate] vx = " + vx);
-                // console.log("[animate] vy = " + vy);
-                // console.log("[animate] dl = " + dl);
-                if(Math.abs(dx) > 1 && Math.abs(dy) > 1){
+                if(dl > 1){
                     vxNext = vx + dx * spring;
                     vyNext = vy + dy * spring;
                     vx =  vxNext;
@@ -162,7 +153,6 @@ YUI().use("node", function(Y) {
         }
 
         function handleLayerTitleMousedown(event) {
-            console.log("[handleLayerTitleMousedown] in effect1");
             var layerPos = layerNode.getXY();
             originX = layerPos[0];
             originY = layerPos[1];
@@ -300,7 +290,6 @@ YUI().use("node", function(Y) {
         }
 
         function handleLayerTitleMousedown(event) {
-            console.log("[handleLayerTitleMousedown] in effect0");
             var layerPos = layerNode.getXY();
             graphicOffsetX = event.pageX - layerPos[0];
             graphicOffsetY = event.pageY - layerPos[1];
@@ -348,7 +337,6 @@ YUI().use("node", function(Y) {
 
         return {
             remove: function() {
-                console.log("[remove] in effect0");
                 unbindEvents();
             }
         };
@@ -365,6 +353,7 @@ YUI().use("node", function(Y) {
 
         var doc = Y.one(document),
             layerNodes = Y.all("." + Constants.LAYER_CLASS),
+            specialNodes = Y.all("." + Constants.SPECIAL_LINK_CLASS),
             currentLayerNode = null,
             isDragging = false,
             totalIndex = 1;
@@ -394,7 +383,6 @@ YUI().use("node", function(Y) {
         function handleSpecialClick(event) {
             var target = event.currentTarget,
                 relatedLayerNode = target.ancestor("." + Constants.LAYER_CLASS);
-                console.log("[handleSpecialClick] relatedLayerNode = ",relatedLayerNode);
             updateSpecialType(relatedLayerNode, target);
         }
 
@@ -485,10 +473,6 @@ YUI().use("node", function(Y) {
             }
         }
 
-        function handleLayerClick(event) {
-            event.stopPropagation();
-        }
-
         function handleLinkClick(event) {
             var target = event.currentTarget,
                 targetValue = target.get("text");
@@ -505,8 +489,6 @@ YUI().use("node", function(Y) {
 
         function bindEvents() {
             effectNode.delegate("click", handleLinkClick, "." + Constants.LINK_CLASS);
-            layerNode.on("click", handleLayerClick);
-            doc.on("click", handleClose);
             layerCloseNode.on("click", handleClose);
         }
 
