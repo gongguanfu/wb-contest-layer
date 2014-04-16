@@ -33,6 +33,264 @@ YUI().use("node", function(Y) {
         return animation;
     }());
 
+    // special效果2 重力和抛东西
+    Y.vividLayer.specialEffect2 = function(layerNode) {
+        var Constants = {
+            LAYER_TITLE_CLASS: "layer_title",
+            FRICTION: 0.95,
+            GRAVITY: 1,
+            COLLISION: - 0.95,
+            FORCE: 2,
+
+            // 限制，如果在这个帧数内，元素的位置没有发生变化，则认为元素已经停止 
+            COUNT_LIMIT: 20
+        };
+
+        var doc = Y.one(document),
+            win = Y.one(window),
+            body = Y.one("body"),
+            layerWidth = 0,
+            layerHeight = 0,
+            dragOffsetX = 0,
+            dragOffsetY = 0,
+            newX = 0,
+            newY = 0,
+            oldX = 0,
+            oldY = 0,
+            deltaX = 0,
+            deltaY = 0,
+            edgeBox = null,
+            groundGraphicNode = null,
+            isDragging = false;
+
+        // 工具函数 - 函数节流
+        function throttle(fn, context) {
+            var limitTime = 100;
+            clearTimeout(fn.timeId);
+            fn.timeId = setTimeout(function() {
+                fn.call(context);
+            }, limitTime);
+        }
+
+        // 图形，用来标识地面
+        function createGround() {
+            groundGraphicNode = Y.Node.create("<div></div>");
+            groundGraphicNode.setStyles({
+                position: "absolute",
+                width: doc.get("winWidth"),
+                height: 2,
+                background: "#000",
+                opacity: 0.2,
+                left: 0,
+                top: oldY + layerHeight,
+                zIndex: 2000
+            });
+            groundGraphicNode.appendTo(body);
+        }
+
+        // 确定边界
+        function setupEdge(){
+            edgeBox = {
+                top: doc.get("docScrollY"),
+                bottom: parseInt(groundGraphicNode.getStyle("top")),
+                left: 0,
+                right: doc.get("winWidth")
+            };
+        }
+
+        function updateLayerPos() {
+            var properX = newX,
+            properY = newY;
+
+            if(properX < edgeBox.left){
+                properX = edgeBox.left;
+            } else if(properX > edgeBox.right - layerWidth){
+                properX = edgeBox.right - layerWidth;
+            }
+
+            if(properY < edgeBox.top){
+                properY = edgeBox.top;
+            }else if(properY > edgeBox.bottom - layerHeight){
+                properY = edgeBox.bottom - layerHeight;
+            }
+
+            layerNode.setXY([properX, properY]);
+        }
+
+        function handleDrag(event) {
+            if (isDragging) {
+                newX = event.pageX - dragOffsetX;
+                newY = event.pageY - dragOffsetY;
+                deltaX = newX - oldX;
+                deltaY = newY - oldY;
+                updateLayerPos();
+                oldX = newX;
+                oldY = newY;
+            }
+            event.preventDefault();
+        }
+
+        function setAnimationReady() {
+            if (!window.requestAnimationFrame) {
+                window.requestAnimationFrame = (function() {
+                    return window.webkitRequestAnimationFrame ||
+                        window.mozRequestAnimationFrame ||
+                        window.oRequestAnimationFrame ||
+                        window.msRequestAnimationFrame ||
+                        function(callback, element) {
+                            window.setTimeout(callback, 1000 / 60);
+                    };
+                })();
+            }
+        }
+
+        // 在有重力的空间内自由运动
+        function startFreeMove() {
+            var layerPos = layerNode.getXY(),
+                x = layerPos[0],
+                y = layerPos[1],
+                recordX = x,
+                recordY = y,
+                recordLastX = x,
+                recordLastY  = y,
+                count = 0,
+                countLimit = Constants.COUNT_LIMIT,
+
+                // 使用刚开始自由运动时，delta记录的数值作为初速度
+                vx = deltaX * Constants.FORCE,
+                vy = deltaY * Constants.FORCE,
+                friction = Constants.FRICTION,
+                gravity = Constants.GRAVITY,
+                collision = Constants.COLLISION;
+
+            // 自由运动的速度和边界判定
+            function move(){
+                var recordPos;
+
+                if(x < edgeBox.left){
+                    x = 0;
+                    vx = vx * collision;
+                } else if(x > edgeBox.right - layerWidth){
+                    x = edgeBox.right - layerWidth;
+                    vx = vx * collision;
+                }
+
+                if(y < edgeBox.top){
+                    y = 0;
+                    vy = vy * collision;
+                }else if(y > edgeBox.bottom - layerHeight){
+                    y = edgeBox.bottom - layerHeight;
+                    vy = vy * collision;
+                }
+                layerNode.setXY([x, y]);
+                recordPos = layerNode.getXY();
+                recordX = recordPos[0];
+                recordY = recordPos[1];
+            }
+
+            // 动画循环
+            function animate() {
+                    vy = vy + gravity;
+                    x = x + vx;
+                    y = y + vy;
+                    vx *= friction;
+                    vy *= friction;
+                    move();
+                    if(recordX === recordLastX && recordY === recordLastY){
+                        count ++;
+                    }else{
+                        count = 0;
+                        recordLastX = recordX;
+                        recordLastY = recordY;
+                    }
+                    if(count > countLimit){
+                        return endFreeMove();
+                    }
+                    if(isDragging){
+                        return;
+                    }
+                    requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // 由于摩擦力和碰撞损耗而停止
+        function endFreeMove() {
+            groundGraphicNode.remove();
+            groundGraphicNode = null;
+        }
+
+        function handleDocMouseup(event) {
+            if (isDragging) {
+                isDragging = false;
+                doc.detach("mousemove", handleDrag);
+                body.setStyle("cursor", "auto");
+                startFreeMove();
+            }
+        }
+
+        function handleLayerTitleMousedown(event) {
+            var layerPos = layerNode.getXY();
+            oldX = newX = layerPos[0];
+            oldY = newY = layerPos[1];
+            dragOffsetX = event.pageX - oldX;
+            dragOffsetY = event.pageY - oldY;
+
+            if(isDragging === false){
+                if(groundGraphicNode === null){
+                    createGround();
+                    setupEdge();
+                } 
+                isDragging = true;
+                doc.on("mousemove", handleDrag);
+                body.setStyle("cursor", "move");
+                event.preventDefault();
+            }
+        }
+
+        function assignData() {
+            var isHidden = layerNode.getStyle("display") === "none" ? true : false;
+            if (isHidden) {
+                layerNode.show();
+            }
+            layerWidth = layerNode.get("offsetWidth");
+            layerHeight = layerNode.get("offsetHeight");
+            if (isHidden) {
+                layerNode.hide();
+            }
+        }
+
+        function unbindEvents() {
+            layerNode.detach();
+            doc.detach("mouseup", handleDocMouseup);
+        }
+
+        function bindEvents() {
+            layerNode.on("mousedown", handleLayerTitleMousedown);
+            doc.on("mouseup", handleDocMouseup);
+        }
+
+        function init() {
+            if (layerNode) {
+                assignData();
+                setAnimationReady();
+                bindEvents();
+            }
+        }
+
+        init();
+
+        return {
+            remove: function() {
+                unbindEvents();
+                if(groundGraphicNode){
+                    endFreeMove();
+                }
+            }
+        };
+    };
+
     // special效果1 弹性
     Y.vividLayer.specialEffect1 = function(layerNode) {
         var Constants = {
@@ -97,38 +355,38 @@ YUI().use("node", function(Y) {
         }
 
         // 弹性运动到原位置
-        function startSpringMove(){
+        function startSpringMove() {
             var layerPos = layerNode.getXY(),
-            x = layerPos[0],
-            y = layerPos[1],
-            dx = 0,
-            dy = 0,
-            dl = 0,
-            vx = 0,
-            vy = 0,
-            vxNext = 0,
-            vyNext = 0,
-            friction = Constants.FRICTION,
-            spring = Constants.SPRING;
+                x = layerPos[0],
+                y = layerPos[1],
+                dx = 0,
+                dy = 0,
+                dl = 0,
+                vx = 0,
+                vy = 0,
+                vxNext = 0,
+                vyNext = 0,
+                friction = Constants.FRICTION,
+                spring = Constants.SPRING;
 
             // 弹性动画循环
-            function animate(){
+            function animate() {
                 dx = originX - x;
                 dy = originY - y;
-                dl = Math.sqrt(dx *dx + dy * dy);
+                dl = Math.sqrt(dx * dx + dy * dy);
 
-                if(dl > 1){
+                if (dl > 1) {
                     vxNext = vx + dx * spring;
                     vyNext = vy + dy * spring;
-                    vx =  vxNext;
+                    vx = vxNext;
                     vy = vyNext;
                     x = x + vx;
                     y = y + vy;
-                    layerNode.setXY([x, y]);
                     vx *= friction;
                     vy *= friction;
+                    layerNode.setXY([x, y]);
                     requestAnimationFrame(animate);
-                }else{
+                } else {
                     layerNode.setXY([originX, originY]);
                     endSpringMove();
                 }
@@ -138,7 +396,7 @@ YUI().use("node", function(Y) {
         }
 
         // 结束弹性动画
-        function endSpringMove(){
+        function endSpringMove() {
             originGraphicNode.remove();
             originGraphicNode = null;
         }
@@ -356,7 +614,7 @@ YUI().use("node", function(Y) {
             specialNodes = Y.all("." + Constants.SPECIAL_LINK_CLASS),
             currentLayerNode = null,
             isDragging = false,
-            totalIndex = 1;
+            totalIndex = 2;
 
         function updateSpecialType(layerNode, linkNode) {
             var specialIndex = layerNode.getData("specialIndex"),
@@ -386,8 +644,13 @@ YUI().use("node", function(Y) {
             updateSpecialType(relatedLayerNode, target);
         }
 
+        function handleSpecialMousedown(event){
+            event.stopPropagation();
+        }
+
         function bindEvents() {
             doc.delegate("click", handleSpecialClick, "." + Constants.SPECIAL_LINK_CLASS);
+            specialNodes.on("mousedown", handleSpecialMousedown);
         }
 
         function init() {
