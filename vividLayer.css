@@ -478,7 +478,6 @@
     }
 
     50%{
-
         -webkit-transform:scale(0.5,0.5) translateX(-600px) rotate(360deg);
         opacity:0.5;
     }
