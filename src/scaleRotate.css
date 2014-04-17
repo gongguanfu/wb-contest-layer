@@ -1,9 +1,9 @@
 /*
-* scaleRotateSTB.css
+* scaleRotate.css
 */
 
-.scaleRotateSTBIn,
-.scaleRotateSTBOut{
+.scaleRotateIn,
+.scaleRotateOut{
     -webkit-animation-duration:.25s;
     -webkit-animation-iteration-count:1;
     -webkit-animatino-fill-mode:both;
@@ -12,23 +12,23 @@
     animatino-fill-mode:both;
 }
 
-.scaleRotateSTBIn{
+.scaleRotateIn{
     -webkit-animation-timing-function:ease-out;
     animation-timing-function:ease-out;
 }
 
-.scaleRotateSTBOut{
+.scaleRotateOut{
     -webkit-animation-timing-function:ease-in;
     animation-timing-function:ease-in;
 }
 
 
-.scaleRotateSTBIn{
-    -webkit-animation-name:scaleRotateSTBIn;
-    animation-name:scaleRotateSTBIn;
+.scaleRotateIn{
+    -webkit-animation-name:scaleRotateIn;
+    animation-name:scaleRotateIn;
 }
 
-@-webkit-keyframes scaleRotateSTBIn{
+@-webkit-keyframes scaleRotateIn{
     0%{
         -webkit-transform:scale(0,0) rotate(0deg);
 
@@ -38,7 +38,7 @@
     }
 }
 
-@keyframes scaleRotateSTBIn{
+@keyframes scaleRotateIn{
     0%{
         transform:scale(0,0) rotate(0deg);
     }
@@ -47,12 +47,12 @@
     }
 }
 
-.scaleRotateSTBOut{
-    -webkit-animation-name:scaleRotateSTBOut;
-    animation-name:scaleRotateSTBOut;
+.scaleRotateOut{
+    -webkit-animation-name:scaleRotateOut;
+    animation-name:scaleRotateOut;
 }
 
-@-webkit-keyframes scaleRotateSTBOut{
+@-webkit-keyframes scaleRotateOut{
     0%{
         -webkit-transform:scale(1,1) rotate(0deg);
     }
@@ -61,7 +61,7 @@
     }
 }
 
-@keyframes scaleRotateSTBOut{
+@keyframes scaleRotateOut{
     0%{
         transform:scale(1,1) rotate(0deg);
     }

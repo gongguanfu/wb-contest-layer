@@ -1,9 +1,9 @@
 /*
-* scaleSTBLeftRight.css
+* scaleRotateX.css
 */
 
-.scaleSTBLeftRightIn,
-.scaleSTBLeftRightOut{
+.scaleRotateXIn,
+.scaleRotateXOut{
     -webkit-animation-duration:.25s;
     -webkit-animation-iteration-count:1;
     -webkit-animatino-fill-mode:both;
@@ -12,23 +12,23 @@
     animatino-fill-mode:both;
 }
 
-.scaleSTBLeftRightIn{
+.scaleRotateXIn{
     -webkit-animation-timing-function:ease-out;
     animation-timing-function:ease-out;
 }
 
-.scaleSTBLeftRightOut{
+.scaleRotateXOut{
     -webkit-animation-timing-function:ease-in;
     animation-timing-function:ease-in;
 }
 
 
-.scaleSTBLeftRightIn{
-    -webkit-animation-name:scaleSTBLeftRightIn;
-    animation-name:scaleSTBLeftRightIn;
+.scaleRotateXIn{
+    -webkit-animation-name:scaleRotateXIn;
+    animation-name:scaleRotateXIn;
 }
 
-@-webkit-keyframes scaleSTBLeftRightIn{
+@-webkit-keyframes scaleRotateXIn{
     0%{
         -webkit-transform:scale(0,0) translateX(0) rotate(0deg);
         opacity:0;
@@ -48,7 +48,7 @@
 
 
 
-@keyframes scaleSTBLeftRightIn{
+@keyframes scaleRotateXIn{
     0%{
         transform:scale(0,0) translateX(0) rotate(0deg);
         opacity:0;
@@ -67,12 +67,12 @@
     }
 }
 
-.scaleSTBLeftRightOut{
-    -webkit-animation-name:scaleSTBLeftRightOut;
-    animation-name:scaleSTBLeftRightOut;
+.scaleRotateXOut{
+    -webkit-animation-name:scaleRotateXOut;
+    animation-name:scaleRotateXOut;
 }
 
-@-webkit-keyframes scaleSTBLeftRightOut{
+@-webkit-keyframes scaleRotateXOut{
     0%{
         -webkit-transform:scale(1,1) translateX(0) rotate(0deg);
         opacity:1;
@@ -91,7 +91,7 @@
     }
 }
 
-@keyframes scaleSTBLeftRightOut{
+@keyframes scaleRotateXOut{
     0%{
         transform:scale(1,1) translateX(0) rotate(0deg);
         opacity:1;
